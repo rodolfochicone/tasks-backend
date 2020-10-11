@@ -51,6 +51,14 @@ pipeline {
                 }
             }
         }
+        stage ('Functional Test'){
+            steps {
+                dir('functional-test') {
+                    git credentialsId: 'github_login', url: 'https://github.com/rodolfochicone/tasks-functional-test.git'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
 
